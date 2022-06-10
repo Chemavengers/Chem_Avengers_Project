@@ -19,7 +19,8 @@ function App() {
           <Routes>      
             <Route exact path ='/signup' element={<SignUp/>}/>
             <Route path = '/login' element={<Login/>}/>
-            <AuthenticatedRoute path={'/'} element= {<Dashboard/>} />
+            <Route path="/" element={<AuthenticatedRoute props={<Dashboard/>}/>} />
+            {/* <Route path={'/'}  props={<Dashboard/>} element={<AuthenticatedRoute/>} /> */}
             {/* <AuthenticatedRoute path={'/:id'} component = {PersonalProjectDashboard} /> */}
           </Routes>
         </div>
