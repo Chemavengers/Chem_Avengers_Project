@@ -1,4 +1,4 @@
-const signUp = async ({username, password, firstname, lastname, email}) => {
+const SignUpCheck = async ({username, password, firstname, lastname, email}) => {
     try {
         let response = await fetch(`${process.env.REACT_APP_API_URL}/signup/`, {
             method: 'post',
@@ -10,6 +10,7 @@ const signUp = async ({username, password, firstname, lastname, email}) => {
             body: JSON.stringify({username,password,firstname,lastname,email})
         })
         let result = await response.json();
+        console.log(result)
         return true
     } catch {
         console.log("failed to signup")
@@ -17,7 +18,7 @@ const signUp = async ({username, password, firstname, lastname, email}) => {
     }
 }
 
-const login = async ({username, password}) => {
+const LoginCheck = async ({username, password}) => {
     try {
         let response = await fetch(`${process.env.REACT_APP_API_URL}/login/`, {
             method: 'post',
@@ -69,9 +70,9 @@ const getToken = () => {
     }
 }
 
-const singOut = () => {
+const SignOut = () => {
     sessionStorage.removeItem('Authorization');
     //clear mobx username and pending.....
 } 
 
-export { signUp, login, tokenCheck, getToken };
+export { SignUpCheck, LoginCheck, tokenCheck, getToken };

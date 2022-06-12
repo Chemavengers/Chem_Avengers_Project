@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import {Route, Navigate, withRouter} from 'react-router-dom'; 
 
-import { tokenCheck } from '../../utils/auth'
+import { tokenCheck } from '../../../utils/auth'
 
 const AuthenticatedRoute = (props) => {
     const [state, setState] = useState ({pending:true, username:''});
 
-    const loginState = async () => {
+    const LoginState = async () => {
         let login = await tokenCheck();
         setState({...login})
     } 
 
     useEffect(()=>{
-        loginState();
+        LoginState();
     },[state.pending, state.username])
   
 
