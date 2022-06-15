@@ -112,6 +112,7 @@ const SignUp = (props) => {
             last name
             <input name="lastname" defaultValue={state.lastname} onChange={(event)=>{
                 let { name, value } = event.target;
+                console.log(value)
                 value = filter.clean(value) 
                 setState({
                     ...state,

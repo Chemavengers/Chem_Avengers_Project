@@ -4,9 +4,6 @@ import {Link, RouteComponentProps } from 'react-router-dom';
 import { LoginCheck } from '../../utils/auth'; 
 import { setInterval } from 'timers';
 
-import { createBrowserHistory } from "history";
-let history = createBrowserHistory();
-
 const Login = ({props}) => {
 
     let defaultState = {}

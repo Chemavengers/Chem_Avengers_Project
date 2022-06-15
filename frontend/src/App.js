@@ -1,10 +1,9 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import {  
   BrowserRouter as Router,
   Routes,
-  Route,
-  useLocation
+  Route
 } from 'react-router-dom';
 
 import Login from './Components/Login';
