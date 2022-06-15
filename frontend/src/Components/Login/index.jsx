@@ -1,5 +1,5 @@
-import React, { FC, useState, useEffect } from 'react';
-import {Link, RouteComponentProps } from 'react-router-dom';
+import React, {  useState, useEffect } from 'react';
+import {Link } from 'react-router-dom';
 
 import { LoginCheck } from '../../utils/auth'; 
 import { setInterval } from 'timers';
