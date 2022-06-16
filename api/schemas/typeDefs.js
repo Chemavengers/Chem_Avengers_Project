@@ -14,7 +14,6 @@ const typeDefs = gql`
         email: String!
         age: Int!
         gender: Gender
-        status: Status
         bio: String
     }
 
