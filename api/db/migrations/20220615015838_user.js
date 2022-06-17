@@ -14,7 +14,8 @@ exports.up = function(knex) {
       table.string('bio');
       table.enu('email_status', ['verified', 'pending']).defaultTo('pending');
       table.enu('authority_status', ['student', 'teacher', 'admin']).defaultTo('student')
-      table.timestamps(true,true);
+      table.enu('account_security_level', ['no_email_verify', 'email_verify', 'phone_verification']).defaultTo('no_email_verify');
+      table.timestamps(true,true);  
   })
 };
 
