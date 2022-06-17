@@ -61,6 +61,9 @@ const resolvers = {
                 return { token, user }
             }
         },
+        ResetPassword: async (parent, { password }) => {
+            
+        }
     }
 }
 
