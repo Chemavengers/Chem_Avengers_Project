@@ -113,7 +113,7 @@ const SignUp = (props) => {
             <input name="lastname" defaultValue={state.lastname} onChange={(event)=>{
                 let { name, value } = event.target;
                 console.log(value)
-                value = filter.clean(value) 
+                // value = filter.clean(value) 
                 setState({
                     ...state,
                     [name]:value
@@ -125,7 +125,7 @@ const SignUp = (props) => {
             email
             <input name="email" type="email" defaultValue={state.email} onChange={(event)=>{
                 let { name, value } = event.target;
-                value = filter.clean(value)
+                // value = filter.clean(value)
                 setState({
                     ...state,
                     [name]:value
@@ -136,7 +136,7 @@ const SignUp = (props) => {
             username
             <input name="username" defaultValue={state.username} onChange={(event)=>{
                 let { name, value } = event.target;
-                value = filter.clean(value)
+                // value = filter.clean(value)
                 setState({
                     ...state,
                     [name]:value

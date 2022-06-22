@@ -38,6 +38,8 @@ const LoginCheck = async ({username, password}) => {
     }
 }
 
+
+
 const tokenCheck = async () => {
     const token = sessionStorage.getItem('Authorization');
     try {
@@ -60,6 +62,11 @@ const tokenCheck = async () => {
     
 }
 
+const SetLoginToken = (idToken) => {
+    localStorage.setItem('Authorization', idToken);
+    window.location.assign('/');
+}
+
 const getToken = () => {
     const token = sessionStorage.getItem('Authorization');
 
@@ -72,7 +79,7 @@ const getToken = () => {
 
 const SignOut = () => {
     sessionStorage.removeItem('Authorization');
-    //clear mobx username and pending.....
+    window.location.reload();
 } 
 
 export { SignUpCheck, LoginCheck, tokenCheck, getToken };

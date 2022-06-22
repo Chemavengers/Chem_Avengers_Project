@@ -4,6 +4,9 @@ import {Link } from 'react-router-dom';
 import { LoginCheck } from '../../utils/auth'; 
 import { setInterval } from 'timers';
 
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../utils/GraphQL/mutations';
+
 const Login = ({props}) => {
 
     let defaultState = {}
@@ -15,6 +18,7 @@ const Login = ({props}) => {
     }
 
     const [ inputState, setInputState ] = useState(defaultState)
+    const [Login, { error, data }] = useMutation(LOGIN);
 
 
     const onLogin = async (event) => { 
@@ -52,10 +56,16 @@ const Login = ({props}) => {
             },5000)
             return
         }
-        
-        let result = await LoginCheck({username:inputState.username || "", password:inputState.password || ""})
-        
-        if (result === true) {
+        let loginState = {username:inputState.username || "", password:inputState.password || ""}
+        let result = await LoginCheck()
+
+        const { data } = await Login({
+            variables: { ...loginState }
+        })
+
+        console.log(data)
+
+        if (data === true) {
             console.log("here")
             props.history.push('/')
         } else {

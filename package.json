@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node api/server.js",
+    "develop": "concurrently \"cd api && npm run watch\" \"cd frontend && npm start\"",
+    "install": "cd api && npm i && cd ../frontend && npm i",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd frontend && npm run build"
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Chemavengers/Chem_Avengers_Project/issues"
   },
-  "homepage": "https://github.com/Chemavengers/Chem_Avengers_Project#readme"
+  "homepage": "https://github.com/Chemavengers/Chem_Avengers_Project#readme",
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
 }

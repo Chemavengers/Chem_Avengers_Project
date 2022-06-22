@@ -19,6 +19,14 @@ async function StartApolloServer(typeDefs, resolvers, Authenticate)
         playground: true
     })
 
+    if (process.env.NODE_ENV === 'production') {
+        app.use(express.static(path.join(__dirname, '../client/build')));
+    }
+      
+      app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, '../client/build/index.html'));
+      });
+
     await server.start();
 
     server.applyMiddleware({ app })
@@ -29,7 +37,7 @@ async function StartApolloServer(typeDefs, resolvers, Authenticate)
     app.use(morgan('dev'))
     
     
-    app.use('/', express.static('public'))
+    // app.use('/', express.static('public'))
 
     app.listen(port, () => {
         console.log(`Server started on port ${port} :)`);

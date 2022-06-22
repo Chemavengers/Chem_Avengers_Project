@@ -13,19 +13,25 @@ import Dashboard from './Components/Dashboard';
 
 import { createBrowserHistory } from "history";
 
+import { ApolloClient } from '@apollo/client'
+import { client } from "./ApolloClient/client";
+
 function App() {
   let history = createBrowserHistory();
-  
+  console.log(client)
   return (
+    <ApolloClient client={client}>
     <Router>
         <div>
           <Routes>      
             <Route exact path ='/signup' element={<SignUp props={history} />}/>
             <Route path = '/login' element={<Login props={history}/>} />
             <Route path="/" element={<AuthenticatedRoute props={<Dashboard props={history}/>}/>} />
+            {/* <Route path="/location" element={<>Dashboard/<</>} /> */}
           </Routes>
         </div>
     </Router>
+    </ApolloClient>
   );
 }
 
