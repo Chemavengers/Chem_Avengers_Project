@@ -1,2 +1,6 @@
 ./frontend/package-lock.json
+./api/package-lock.json
 ./package-lock.json
+./node_modules
+./frontend/node_modules
+./api/node_modules
