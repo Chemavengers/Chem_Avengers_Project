@@ -13,14 +13,14 @@ import Dashboard from './Components/Dashboard';
 
 import { createBrowserHistory } from "history";
 
-import { ApolloClient } from '@apollo/client'
+import { ApolloProvider } from '@apollo/client'
 import { client } from "./ApolloClient/client";
 
 function App() {
   let history = createBrowserHistory();
   console.log(client)
   return (
-    <ApolloClient client={client}>
+    <ApolloProvider client={client}>
     <Router>
         <div>
           <Routes>      
@@ -31,7 +31,7 @@ function App() {
           </Routes>
         </div>
     </Router>
-    </ApolloClient>
+    </ApolloProvider>
   );
 }
 
