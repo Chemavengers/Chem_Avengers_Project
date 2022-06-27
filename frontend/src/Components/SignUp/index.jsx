@@ -7,6 +7,8 @@ import { SignUpCheck } from '../../utils/auth';
 
 import filter from '../../utils/inputValidation';
 
+import { useMutation } from '@apollo/client';
+import { SIGNUP } from '../../utils/GraphQL/mutations';
 
 const SignUp = (props) => {
     let nav = useNavigate();
@@ -15,6 +17,8 @@ const SignUp = (props) => {
     const [passwordState, setPasswordState] = useState({ capitalCheck:false, lowerCaseCheck:false, numberCheck:false, specialCharacterCheck:false, inputValueClicked:false})
 
     const SpecialCharacterRef = useRef({...passwordState})
+
+    const [SignUp, { error, data }] = useMutation(SIGNUP);
 
     const onSignUp = async () => {
 
@@ -32,10 +36,13 @@ const SignUp = (props) => {
             },5000)
             return
         }
+        let userData = {username: state.username, password:state.password, email:state.email, firstname:state.firstname, lastname:state.lastname}
 
-        let result = await SignUpCheck({username: state.username, password:state.password, email:state.email, firstname:state.firstname, lastname:state.lastname})
+        const { data } = await SignUp({
+            variables: { ...userData  }
+        })
 
-        if (result){
+        if (data){
             nav("/login", {state: {username: state.username, password: state.password}});
         } else {
             setState({
