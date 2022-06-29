@@ -70,7 +70,6 @@ const SetLoginToken = (idToken) => {
 
 const getToken = () => {
     const token = sessionStorage.getItem('Authorization');
-    console.log(token)
     if (token) {
         return token
     } else {
@@ -84,7 +83,15 @@ const SignOut = () => {
 } 
 
 const getProfile = () => {
-    return decode(getToken(), { header: true });
+    let token = getToken()
+    if (token)
+    {
+        return decode(token);
+    }
+    else
+    {
+        return false;
+    }
 }
 
 // SignUpCheck, LoginCheck, tokenCheck,

@@ -26,7 +26,7 @@ function App() {
           <Routes>      
             <Route exact path ='/signup' element={<SignUp props={history} />}/>
             <Route path = '/login' element={<Login props={history}/>} />
-            <Route path="/" element={<AuthenticatedRoute props={<Dashboard props={history}/>}/>} />
+            <Route path="/" element={<AuthenticatedRoute prop={<><Dashboard/></>}/>}/>
             {/* <Route path="/location" element={<>Dashboard/<</>} /> */}
           </Routes>
         </div>

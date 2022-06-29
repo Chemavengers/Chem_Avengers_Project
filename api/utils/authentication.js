@@ -1,17 +1,15 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt')
 require('dotenv').config()
 
 module.exports = {
     Authenticate: function ({ req }) 
     {
-        let token = req.headers["authorization"];
-        
-        if (req.headers["authorization"]) 
-        {
-            token = token.split(' ').pop().trim();
-        }
+        let token = req.body.token || req.query.token || req.headers.authorization;
 
+        if (req.headers.authorization) {
+          token = token.split(' ').pop().trim();
+        }
+        
         if (!token)
         {
             return req
