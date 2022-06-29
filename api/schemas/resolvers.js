@@ -2,6 +2,7 @@ const db = require("../db/knex");
 const bcrypt = require('bcrypt')
 
 const { CreateToken } = require('../utils/authentication')
+const { tryCatcher } = require("../utils/errorHandling")
 
 const resolvers = {
     Query: {
@@ -59,6 +60,10 @@ const resolvers = {
                 const token = CreateToken(user)
                 delete user.password
                 return { token, user }
+            }
+            else
+            {
+                console.log("failed to login.........", error1);
             }
         },
         ResetPassword: async (parent, { password }) => {

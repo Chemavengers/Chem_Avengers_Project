@@ -1,15 +1,17 @@
 import React, {  useState, useEffect } from 'react';
-import {Link } from 'react-router-dom';
+import {Link, Navigate, useNavigate  } from 'react-router-dom';
 
-import { LoginCheck } from '../../utils/auth'; 
 import { setInterval } from 'timers';
 
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../utils/GraphQL/mutations';
 
+import { SetLoginToken } from '../../utils/auth'
+
 const Login = ({props}) => {
 
     let defaultState = {}
+    let navigate = useNavigate();
     // check for signup input
     if (props.location.state){
         defaultState = { ...props.location.state, errorMessage: "",displayPassword:false  };
@@ -23,7 +25,6 @@ const Login = ({props}) => {
 
     const onLogin = async (event) => { 
         event.preventDefault();
-        console.log(inputState.password)
         let token = sessionStorage.getItem('Authorization')
         // checks if user is already signed in.... Need to rework this since it needs to take a request to check if the token is correct... 
         if (token) {
@@ -39,9 +40,9 @@ const Login = ({props}) => {
             })
             clearInterval()
             },10000)
-            props.history.push('/')
+            navigate("/")
         }
-
+        // checks username and password states are empty
         if (inputState.username == "" && inputState.password == "") {
             setInputState({
                 ...inputState,
@@ -56,18 +57,17 @@ const Login = ({props}) => {
             },5000)
             return
         }
+
         let loginState = {username:inputState.username || "", password:inputState.password || ""}
-        let result = await LoginCheck()
 
         const { data } = await Login({
             variables: { ...loginState }
         })
 
-        console.log(data)
-
-        if (data === true) {
-            console.log("here")
-            props.history.push('/')
+        if (data.Login) {
+            SetLoginToken(data.Login.token);
+            
+            navigate("/")
         } else {
             setInputState({
                 ...inputState,

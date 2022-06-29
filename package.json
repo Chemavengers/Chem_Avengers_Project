@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node api/server.js",
-    "develop": "concurrently \"cd api && npm run watch\" \"cd frontend && npm start\"",
+    "develop": "concurrently \"cd api && npm run dev\" \"cd frontend && npm start\"",
     "install": "cd api && npm i && cd ../frontend && npm i",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd frontend && npm run build"
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Chemavengers/Chem_Avengers_Project#readme",
   "dependencies": {
-    "concurrently": "^7.2.2"
+    "concurrently": "^7.2.2",
+    "jwt-decode": "^3.1.2"
   }
 }

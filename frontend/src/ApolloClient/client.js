@@ -6,8 +6,9 @@ import {
   import { setContext } from '@apollo/client/link/context';
 // import { RestLink } from "apollo-link-rest";
 
+// replace this line with uri from heroku... using a react env variable
 const httpLink = createHttpLink({
-    uri: '/graphql',
+    uri: 'http://localhost:5000/graphql',
   });
 
   const autherization = setContext((_, { headers }) => {

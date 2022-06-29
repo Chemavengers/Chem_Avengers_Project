@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import {Link, useNavigate } from 'react-router-dom';
 
-import { SignUpCheck } from '../../utils/auth';
 // import { errorMessages } from '../../utils/failureStrings';
 
 import filter from '../../utils/inputValidation';

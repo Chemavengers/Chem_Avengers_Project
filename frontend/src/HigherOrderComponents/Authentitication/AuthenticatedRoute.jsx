@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {Route, Navigate, withRouter} from 'react-router-dom'; 
 
-import { tokenCheck } from '../../utils/auth'
+import { getProfile } from '../../utils/auth'
 
 const AuthenticatedRoute = (props) => {
     const [state, setState] = useState ({pending:true, username:''});
 
     const LoginState = async () => {
-        let login = await tokenCheck();
-        setState({...login})
+        let login = getProfile()
+        console.log(login)
+        // setState({...login})
     } 
 
     useEffect(()=>{
