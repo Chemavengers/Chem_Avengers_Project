@@ -20,6 +20,11 @@ const AuthenticatedRoute = ({prop}) => {
         }   
     } 
 
+    const ResetState = () => {
+        let resetState = {pending:true, username:""}
+        setState({...resetState})
+    }
+
     useEffect(()=>{
         
     },[state.pending, state.username])
@@ -32,6 +37,10 @@ const AuthenticatedRoute = ({prop}) => {
     if (state.username.length > 0) {
         return prop;
     } else {
+        if (!state.pending)
+        {
+            ResetState();
+        }
         return (<Navigate to='/login' replace={true}/>)
     }
 }
