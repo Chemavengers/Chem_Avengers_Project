@@ -96,4 +96,4 @@ const getProfile = () => {
 
 // SignUpCheck, LoginCheck, tokenCheck,
 
-export { getToken, SetLoginToken,getProfile };
+export { getToken, SetLoginToken,getProfile,SignOut };

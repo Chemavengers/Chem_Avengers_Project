@@ -8,6 +8,8 @@ import { LOGIN } from '../../utils/GraphQL/mutations';
 
 import { SetLoginToken } from '../../utils/auth'
 
+import { Container, Button, Input } from 'semantic-ui-react'
+
 const Login = ({props}) => {
 
     let defaultState = { username: "", password: "", errorMessage : "", displayPassword:false }
@@ -88,11 +90,11 @@ const Login = ({props}) => {
     useEffect(()=>{}, [inputState])
 
     return (
-        <div>
+        <Container>
             {(inputState.errorMessage !== "") ? <p>{inputState.errorMessage}</p> : ""}
             <p>please input username</p>
             <form onSubmit={onLogin}>
-            <input value={inputState.username} name='username' onChange={(event)=>{
+            <Input icon='search' placeholder='username' content={inputState.username} name='username' onChange={(event)=>{
                 event.preventDefault();
                 const {name, value} = event.target
                 setInputState({
@@ -102,7 +104,7 @@ const Login = ({props}) => {
             }}/>
             <br/>
             <p>please input password</p>
-            <input value={inputState.password} type={(inputState.displayPassword) ? "text":"password"} name='password' onChange={(event)=>{
+            <Input icon='search' placeholder='username' content={inputState.password} type={(inputState.displayPassword) ? "text":"password"} name='password' onChange={(event)=>{
                 event.preventDefault();
                 const {name, value} = event.target
                 setInputState({
@@ -110,19 +112,19 @@ const Login = ({props}) => {
                   [name]:value  
                 })
             }}/>
-            <button onClick={(event)=>{
+            <Button content="display password" onClick={(event)=>{
                 event.preventDefault();
                 setInputState({
                     ...inputState,
                     ["displayPassword"]:!inputState.displayPassword
                 })
-            }}>display password</button>
+            }}/>
             <br/>
-            <button type="submit">Login</button>
+            <Button type="submit" content="Login"/>
             <br/>
             </form>
-            <Link to="/signup"><button>New Here? Sign up!</button></Link>
-        </div>
+            <Link to="/signup"><Button content="New Here? Sign up!"/></Link>
+        </Container>
     )
 }
 
