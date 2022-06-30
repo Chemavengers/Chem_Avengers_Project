@@ -170,19 +170,6 @@ const SignUp = (props) => {
                 })
             }}></button>
             <br/>
-            <br/>
-                {(passwordState.inputValueClicked) ? (<div>
-                    <p>at least 8 characters: {(state.password.length >= 8)? "passed" : "failed"}</p>
-                    <br/>
-                    <p> At least one lower case alphabetical character: {(SpecialCharacterRef.current.lowerCaseCheck) ? "passed": "failed"}</p>
-                    <br/>
-                    <p>At least one upper case alphabetical character: {(SpecialCharacterRef.current.capitalCheck) ? "passed": "failed"}</p>
-                    <br/>
-                    <p>At least one of these special characters (?!@_-*~): {(SpecialCharacterRef.current.specialCharacterCheck) ? "passed":"failed"}</p>
-                    <br/>
-                    <p> At least one numerical number: {(SpecialCharacterRef.current.numberCheck)?"passed" :"failed"}</p></div>) :""}  
-
-            <br/>
             <button onClick={onSignUp}>Sign Up</button>
             <br/>
             <Link to={"/login"}><button>Already have an account? login!</button></Link>

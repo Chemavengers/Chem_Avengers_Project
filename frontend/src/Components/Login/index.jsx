@@ -10,14 +10,15 @@ import { SetLoginToken } from '../../utils/auth'
 
 const Login = ({props}) => {
 
-    let defaultState = {}
+    let defaultState = { username: "", password: "", errorMessage : "", displayPassword:false }
     let navigate = useNavigate();
     // check for signup input
-    if (props.location.state){
-        defaultState = { ...props.location.state, errorMessage: "",displayPassword:false  };
-    } else {
-        defaultState = { username: "", password: "", errorMessage : "", displayPassword:false };
-    }
+    // console.log(props)
+    // if (props.location.state){
+    //     defaultState = { ...props.location.state, errorMessage: "",displayPassword:false  };
+    // } else {
+    //     ;
+    // }
 
     const [ inputState, setInputState ] = useState(defaultState)
     const [Login, { error, data }] = useMutation(LOGIN);
@@ -28,7 +29,7 @@ const Login = ({props}) => {
         let token = sessionStorage.getItem('Authorization')
         // checks if user is already signed in.... Need to rework this since it needs to take a request to check if the token is correct... 
         if (token) {
-            token = "";
+            console.log(token)
             setInputState({
                 ...inputState,
                 ["errorMessage"]: "Already Logged In"
@@ -36,7 +37,7 @@ const Login = ({props}) => {
             setInterval(()=>{
                 setInputState({
                 ...inputState,
-                ["errorMessage"]: ""
+                ["errorMessage"]: "bringing you back to the homescreen if you wish to logout please logout at the dashboard....."
             })
             clearInterval()
             },10000)
@@ -84,12 +85,15 @@ const Login = ({props}) => {
         }
     }
 
+    useEffect(()=>{}, [inputState])
+
     return (
         <div>
             {(inputState.errorMessage !== "") ? <p>{inputState.errorMessage}</p> : ""}
             <p>please input username</p>
             <form onSubmit={onLogin}>
             <input value={inputState.username} name='username' onChange={(event)=>{
+                event.preventDefault();
                 const {name, value} = event.target
                 setInputState({
                   ...inputState,
@@ -99,18 +103,20 @@ const Login = ({props}) => {
             <br/>
             <p>please input password</p>
             <input value={inputState.password} type={(inputState.displayPassword) ? "text":"password"} name='password' onChange={(event)=>{
+                event.preventDefault();
                 const {name, value} = event.target
                 setInputState({
                   ...inputState,
                   [name]:value  
                 })
             }}/>
-            <button onClick={()=>{
+            <button onClick={(event)=>{
+                event.preventDefault();
                 setInputState({
                     ...inputState,
                     ["displayPassword"]:!inputState.displayPassword
                 })
-            }}></button>
+            }}>display password</button>
             <br/>
             <button type="submit">Login</button>
             <br/>
