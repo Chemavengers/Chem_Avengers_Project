@@ -98,18 +98,20 @@ const Login = ({props}) => {
     return (
         <Container>
             <Grid verticalAlign='middle' padded="vertically" centered  columns={2}>
-                <Grid.Row>
-                    <Grid.Column centered verticalAlign='middle' padded="vertically">
-                        <Header as='h1'>
-                        <Icon name='dna' />
-                        <Header.Content>User Login</Header.Content>
+                <Grid.Row centered verticalAlign='middle' columns={1}>
+                    <Grid.Column>
+                        <Header as='h1' textAlign='center'>
+                            <Icon name='dna' />
+                            <Header.Content centered>User Login</Header.Content>
                         </Header>
-                            {(inputState.errorMessage !== "") ? <p>{inputState.errorMessage}</p> : ""}
+                    </Grid.Column>
+                    <Grid.Column>
+                        {(inputState.errorMessage !== "") ? <p>{inputState.errorMessage}</p> : ""}
                     </Grid.Column>
                 </Grid.Row>
 
                 <Grid.Column verticalAlign="middle" centered>
-                    <Grid verticalAlign='middle' padded="vertically" centered  columns={1} rows={2}>
+                    <Grid verticalAlign='middle' padded="vertically" centered  columns={2} rows={2}>
                         <form onSubmit={onLogin}>
                         <Grid.Row>
                             <Input icon='user' placeholder='username' content={inputState.username} name='username' onChange={(event)=>{
