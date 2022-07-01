@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container,Button } from 'semantic-ui-react'
+import { Container, Button } from 'semantic-ui-react'
 
 import { SignOut } from '../../utils/auth'
 
