@@ -10,6 +10,7 @@ import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import AuthenticatedRoute from './HigherOrderComponents/Authentitication/AuthenticatedRoute';
 import Dashboard from './Components/Dashboard';
+import NoLoginDashboard from './Components/NoLoggedInRoute/NoLoginDashboard';
 
 import { createBrowserHistory } from "history";
 
@@ -26,7 +27,8 @@ function App() {
           <Routes>      
             <Route exact path ='/signup' element={<SignUp props={history} />}/>
             <Route path = '/login' element={<Login props={history}/>} />
-            <Route path="/" element={<AuthenticatedRoute prop={<><Dashboard/></>}/>}/>
+            <Route path="/" element={<NoLoginDashboard/>}/>
+            <Route path="/personalPage" element={<AuthenticatedRoute prop={<><Dashboard/></>}/>}/>
             {/* <Route path="/location" element={<>Dashboard/<</>} /> */}
           </Routes>
         </div>
