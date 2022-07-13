@@ -11,6 +11,7 @@ const Dashboard = () => {
     return (
     <>
         <Container>
+            <h1>{process.env.REACT_APP_CANVAS_API}</h1>
             <h1>here!!!</h1>
             <p>tag</p>
             <Button content="Sign Out" onClick={()=>{LogOut()}}/>

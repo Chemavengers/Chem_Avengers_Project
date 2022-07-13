@@ -45,10 +45,12 @@ const SignUp = (props) => {
         }
         let userData = {username: state.username, password:state.password, email:state.email, firstname:state.firstname, lastname:state.lastname}
 
+        console.log(userData)
+
         const { data } = await SignUp({
             variables: { ...userData  }
         })
-
+        console.log(data)
         if (data){
             nav("/login", {state: {username: state.username, password: state.password}});
         } else {
@@ -126,6 +128,7 @@ const SignUp = (props) => {
         <Grid.Row centered verticalAlign='middle' columns={1}>
                 <Input icon='user' placeholder='first name' content={state.firstname} name='firstname' 
                     onChange={(event)=>{
+                        console.log()
                     const { name, value } = event.target;
                     setState({
                         ...state,
@@ -134,8 +137,8 @@ const SignUp = (props) => {
                 }}/>
         </Grid.Row>
         <Grid.Row centered verticalAlign='middle' columns={1}>
-                <Input icon='user' placeholder="last name" content={state.lastname} onChange={(event)=>{
-                    let { name, value } = event.target;
+                <Input icon='user' placeholder="last name" name='lastname' content={state.lastname} onChange={(event)=>{
+                    const { name, value } = event.target;
                     console.log(value)
                     // value = filter.clean(value) 
                     setState({
@@ -145,8 +148,8 @@ const SignUp = (props) => {
                 }}/>
         </Grid.Row>
         <Grid.Row centered verticalAlign='middle' columns={1}>
-            <Input icon="envelope outline" placeholder="email" content={state.email} onChange={(event)=>{
-                let { name, value } = event.target;
+            <Input icon="envelope outline" placeholder="email" name="email" content={state.email} onChange={(event)=>{
+                const { name, value } = event.target;
                 // value = filter.clean(value)
                 setState({
                     ...state,
@@ -155,8 +158,9 @@ const SignUp = (props) => {
             }}/>
         </Grid.Row>
         <Grid.Row centered verticalAlign='middle' columns={1}>
-            <Input icon="user" placeholder="username" content={state.username} onChange={(event)=>{
-                let { name, value } = event.target;
+            <Input icon="user" placeholder="username" name="username" content={state.username} onChange={(event)=>{
+                const { name, value } = event.target;
+                console.log(name, value)
                 // value = filter.clean(value)
                 setState({
                     ...state,
@@ -166,7 +170,7 @@ const SignUp = (props) => {
         </Grid.Row>
         <Grid.Row>
             <Grid.Column>
-                <Input icon='lock' placeholder='password' type={(state.displayPassword) ? "text":"password"} name='password' onChange={(event)=>{
+                <Input icon='lock' placeholder='password' name="password" type={(state.displayPassword) ? "text":"password"} onChange={(event)=>{
                         const { name, value } = event.target;
                         setState({
                             ...state,

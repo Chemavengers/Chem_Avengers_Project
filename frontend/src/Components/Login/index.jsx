@@ -72,11 +72,11 @@ const Login = ({props}) => {
         const { data } = await Login({
             variables: { ...loginState }
         })
-
+        console.log(data)
         if (data.Login) {
             SetLoginToken(data.Login.token);
             
-            navigate("/")
+            navigate("/personalPage")
         } else {
             setInputState({
                 ...inputState,

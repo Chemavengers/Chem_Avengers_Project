@@ -19,7 +19,7 @@ import { client } from "./ApolloClient/client";
 
 function App() {
   let history = createBrowserHistory();
-  console.log(client)
+  console.log(process.env)
   return (
     <ApolloProvider client={client}>
     <Router>
@@ -28,7 +28,7 @@ function App() {
             <Route exact path ='/signup' element={<SignUp props={history} />}/>
             <Route path = '/login' element={<Login props={history}/>} />
             <Route path="/" element={<NoLoginDashboard/>}/>
-            <Route path="/personalPage" element={<AuthenticatedRoute prop={<><Dashboard/></>}/>}/>
+            <Route path="/personalPage" element={<AuthenticatedRoute path={"PersonalPage"} prop={<><Dashboard/></>}/>}/>
             {/* <Route path="/location" element={<>Dashboard/<</>} /> */}
           </Routes>
         </div>
