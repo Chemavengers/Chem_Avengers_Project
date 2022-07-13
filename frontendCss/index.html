@@ -1,12 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<title>CSS Website Layout</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Style the header */
+.header {
+  background-color: #c5eceb;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout*/
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
 </head>
 <body>
-    <p></p>
+
+<div class="header">
+  <h1>CHEM Avengers</h1>
+  <p>There are 6.022x10<sup>23</sup> ways to be good at chemistry.</p>
+</div>
+
+<div class="topnav">
+  <a href="#">Link</a>
+  <a href="#">Link</a>
+  <a href="#">Link</a>
+</div>
+
+<div class="row">
+  <div class="column">
+    <h2>Who We Are</h2>
+    <p>The CHEM Avengers are a group of California chemistry and math faculty funded to create student and faculty curriculum to support developing students' identity and self-perception as capable STEM thinkers and learners.</p>
+    </p>The CHEM Avengers span four partner institutions across California higher education: College of Marin, Diablo Valley College, Sonoma State University, and the University of California Berkeley with a shared vision that brilliance in science takes many forms. We are working to change the narrative in STEM education to create equity and build inclusion. Modules in this course have hands-on data-driven curricular materials to support student success in Introductory Chemistry courses.</p>
+    
+  </div>
+  
+  <div class="column">
+    <h2>Site Contents</h2>
+    <p>Some Text.</p>
+  </div>
+  
+  <div class="column">
+    <h2>Navigation</h2>
+    <p>Text or floating link nav</p>
+  </div>
+</div>
+
 </body>
 </html>
