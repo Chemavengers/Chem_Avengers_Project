@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Container, Header,Grid, Segment, Button, Divider,Card } from "semantic-ui-react";
 import { Link } from "react-router-dom"
 
-import { GetModules } from "../../../utils/CanvasRequests";
+// import { GetModules } from "../../../utils/CanvasRequests";
 
 const NoLoginDashboard = () => {
   let [state, setState] = useState([]);
 
   useEffect(()=>{
-    GetModules();
+    // GetModules();
   }, [state])
 
     console.log(state)
@@ -36,7 +36,7 @@ const NoLoginDashboard = () => {
         <Grid.Column>
         <Card.Group>
         </Card.Group>
-          
+          <iframe src="https://marin.instructure.com/courses/3709"></iframe>
         </Grid.Column>
     </Grid.Row>
   </Grid>
